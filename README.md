@@ -69,6 +69,7 @@ I ran each of the twenty stimuli through all four models. This process produced 
 | gpt2-medium  | HighContext | room         | 2.010232    |
 | mBERT        | HighContext | room         | 4.086168    |
 | XLM-R        | HighContext | room         | 5.441202    |
+
 *Table 2. Final Results of Test with Surprisal Rates*
 
 ## Results
