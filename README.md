@@ -1,5 +1,5 @@
 # High-Context vs. Low-Context Sensitivity in LLMs and ‘WEIRD’ Cultural Bias in Training Corpora
-**Tanvi Vidyala**
+**Tanvi Vidyala** <br>
 *COGS 150 Fall 2025 Final Project*
 
 ## Research Question
