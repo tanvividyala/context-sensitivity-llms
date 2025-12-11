@@ -63,7 +63,7 @@ I ran each of the twenty stimuli through all four models. This process produced 
 | mBERT        | LowContext  | cold         | 3.946653    |
 | XLM-R        | LowContext  | cold         | 2.817520    |
 | distilgpt2   | HighContext | chilly       | 9.574214    |
-| ...          | ...         | ...          | ...         |
+| ....         | ....         | ....          | ....         |
 | XLM-R        | LowContext  | temperature  | 4.019905    |
 | distilgpt2   | HighContext | room         | 2.339399    |
 | gpt2-medium  | HighContext | room         | 2.010232    |
