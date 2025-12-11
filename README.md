@@ -55,6 +55,7 @@ Surprisal was calculated as a proxy for the model's "surprise" to see how unexpe
 
 ### Procedure
 I ran each of the twenty stimuli through all four models. This process produced 80 total data points. For each case, I recorded the model, the condition, the critical word, and the surprisal value in a pandas dataframe.
+
 | model        | condition   | critical     | surprisal   |
 |--------------|-------------|--------------|-------------|
 | distilgpt2   | LowContext  | cold         | 5.225095    |
