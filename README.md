@@ -95,13 +95,17 @@ This study faces several potential confounding variables. All stimuli were writt
 Even with these constraints, the study highlights a meaningful concern in the accessibility of LLMs. These systems operate on a global scale, yet they may favor direct speech patterns associated with WEIRD cultures. High-context phrasing may appear marked or unexpected to the model. This creates pressure toward explicit forms of communication that do not match the needs of users from high-context backgrounds who may perceive low-context word predictions as impolite. Future work towards this question should involve larger stimulus sets, more naturalistic examples, and languages beyond English. Studies that juxtapose model surprisal with human judgments across cultural groups can help clarify how LLMs learn and reproduce context-based communication norms, making these models helpful for people worldwide.
 
 ## Works Cited
-- Anadolu Agency. "2.9B people still offline, while 4.9B used internet in 2021: UN." Anadolu Agency, 30 Nov. 2021, https://www.aa.com.tr/en/world/29b-people-still-offline-while-49b-used-internet-in-2021-un/2435060.
-- Hall, Edward T., and Mildred Reed Hall. "Key Concepts: Underlying Structures of Culture." Understanding Cultural Differences, Intercultural Press, 1990, pp. 199-202.
-- Resnik, Philip. "Large Language Models are Biased Because They Are Large Language Models." arXiv, 2024.
-- Tao, Yan, et al. "Cultural Bias and Cultural Alignment of Large Language Models." arXiv, 2024.
-- Trott, Sean. "GPT-4 is 'WEIRD'—what should we do about it?" The Counterfactual, 12 Feb. 2024.
-- Sheposh, Richard. "High-context and low-context cultures." Research Starters, EBSCO, 2025.
-- Wang, Daphne, et al. "Extracting structure from an LLM - how to improve on surprisal-based models of Human Language Processing." ACL Anthology, pp. 4938-4944.
-- Zaib, Zaha, Syed Kazim Shah, and Muhammad Ilyas Mahmood. "A Comparative Analysis of Searle's Speech Act Theory and Cohen's Model: An Exploration of the Social Contexts in Which Explicit and Implicit Speech Acts Are Used." Journal of Development and Social Sciences, vol. 4, no. 3, 2023, pp. 1223-1236, http://dx.doi.org/10.47205/jdss.2023(4-III)114.
+* Anadolu Agency. *["2.9B people still offline, while 4.9B used internet in 2021: UN"](https://www.aa.com.tr/en/world/29b-people-still-offline-while-49b-used-internet-in-2021-un/2435060).* Anadolu Agency, 30 Nov. 2021.
 
+* Hall, Edward T., and Mildred Reed Hall. *["Key Concepts: Underlying Structures of Culture"](https://www.csun.edu/~sm60012/Intercultural/Key%20Concepts%20-%20Hall%20and%20Hall%20-%201.pdf).* Understanding Cultural Differences, Intercultural Press, 1990, pp. 199–202.
+
+* Resnik, Philip. *["Large Language Models are Biased Because They Are Large Language Models"](https://arxiv.org/abs/2406.13138).* arXiv, 2024.
+
+* Tao, Yan, et al. *["Cultural Bias and Cultural Alignment of Large Language Models"](https://arxiv.org/abs/2311.14096).* arXiv, 2024.
+
+* Trott, Sean. *["GPT-4 Is ‘WEIRD’ — What Should We Do About It?"](https://seantrott.substack.com/p/gpt-4-is-weirdwhat-should-we-do-about).* The Counterfactual, 12 Feb. 2024.
+
+* Sheposh, Richard. *["High-context and low-context cultures"](https://www.ebsco.com/research-starters/communication-and-mass-media/high-context-and-low-context-cultures).* Research Starters, EBSCO, 2025.
+
+* Zaib, Zaha, Syed Kazim Shah, and Muhammad Ilyas Mahmood. *["A Comparative Analysis of Searle’s Speech Act Theory and Cohen’s Model: An Exploration of the Social Contexts in Which Explicit and Implicit Speech Acts Are Used"](https://ojs.jdss.org.pk/journal/article/view/1093).* Journal of Development and Social Sciences, vol. 4, no. 3, 30 Sept. 2023, pp. 1223–1236.
 
