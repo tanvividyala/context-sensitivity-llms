@@ -54,7 +54,7 @@ Surprisal was calculated as a proxy for the model's "surprise" to see how unexpe
 `masked_surprisal()`: For `mBERT` and `XLM-R`, I placed a `[MASK]` token at the end of the prefix. I extracted the logits for the mask position to compute the probability of the critical word. If the tokenizer split the word into several sub-tokens, I used the mean surprisal across those pieces.
 
 ### Procedure
-I ran each of the twenty stimuli through all four models. This process produced 80 total data points. For each case, I recorded the model, the condition, the critical word, and the surprisal value in a pandas dataframe.
+I ran each of the twenty stimuli through all four models. This process produced 80 total data points. For each case, I recorded the model, the condition, the critical word, and the surprisal value in a pandas dataframe. Here are the first and last 5 rows of the dataset.
 
 | model        | condition   | critical     | surprisal   |
 |--------------|-------------|--------------|-------------|
@@ -70,7 +70,7 @@ I ran each of the twenty stimuli through all four models. This process produced 
 | mBERT        | HighContext | room         | 4.086168    |
 | XLM-R        | HighContext | room         | 5.441202    |
 
-*Table 2. Final Results of Test with Surprisal Rates*
+*Table 2. Sample of Final Results of Test with Surprisal Rates*
 
 ## Results
 Consistent with my hypothesis, all four models exhibited lower mean surprisal for Low-Context stimuli compared to High-Context stimuli. This indicates that the models found direct, explicit communication norms (typical of WEIRD cultures) significantly more predictable than indirect, high-context alternatives.
