@@ -54,7 +54,7 @@ Surprisal was calculated as a proxy for the model's "surprise" to see how unexpe
 `masked_surprisal()`: For `mBERT` and `XLM-R`, I placed a `[MASK]` token at the end of the prefix. I extracted the logits for the mask position to compute the probability of the critical word. If the tokenizer split the word into several sub-tokens, I used the mean surprisal across those pieces.
 
 ### Procedure
-I ran each of the twenty stimuli through all four models. This process produced 80 total data points. For each case, I recorded the model, the condition, the critical word, and the surprisal value in a pandas dataframe. Here are the first and last 5 rows of the dataset.
+I ran each of the twenty stimuli through all four models. This process produced 80 total data points. For each case, I recorded the model, the condition, the critical word, and the surprisal value in a pandas dataframe. 
 
 | model        | condition   | critical     | surprisal   |
 |--------------|-------------|--------------|-------------|
@@ -63,7 +63,6 @@ I ran each of the twenty stimuli through all four models. This process produced 
 | mBERT        | LowContext  | cold         | 3.946653    |
 | XLM-R        | LowContext  | cold         | 2.817520    |
 | distilgpt2   | HighContext | chilly       | 9.574214    |
-| ***         | ***         | ***          | ***         |
 | XLM-R        | LowContext  | temperature  | 4.019905    |
 | distilgpt2   | HighContext | room         | 2.339399    |
 | gpt2-medium  | HighContext | room         | 2.010232    |
