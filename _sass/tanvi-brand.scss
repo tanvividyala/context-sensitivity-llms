@@ -53,21 +53,7 @@ body {
 }
 
 .page-header {
-  background-color: var(--moss-900);
-  background-image: linear-gradient(135deg, var(--moss-900) 0%, var(--moss) 100%);
-  color: var(--cream-50);
-}
-
-.page-header .project-name {
-  font-family: var(--font-display);
-  font-weight: 500;
-  color: var(--cream-50);
-}
-
-.page-header .project-tagline {
-  font-family: var(--font-sans);
-  font-weight: 300;
-  color: var(--cream-200);
+  display: none;
 }
 
 .btn {
