@@ -13,7 +13,7 @@
         @import "jekyll-theme-cayman";
         @import "tanvi-brand";        ← or inline this file's contents after the import
 
-   That's it. Colors and fonts only — layout, spacing, and shadows are untouched.
+   The Cayman page-header banner is styled with a moss gradient.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Google Fonts ───────────────────────────────────────────────────────── */
@@ -33,17 +33,13 @@
 /* ── Color & font tokens ────────────────────────────────────────────────── */
 
 :root {
-  /* ── Core palette ──────────────────────────────────────────────────────
-     Five evocative names derived from the Tanvi source palette.
-     Use these in one-off accents; prefer semantic aliases in components.  */
-  --poppy:   #d85455; /* warm red  — primary accent / CTAs / links */
-  --sage:    #91ad94; /* dusty green — success / secondary           */
-  --cream:   #fbf6e9; /* off-white  — page background                */
-  --apricot: #f1a97a; /* peach      — highlight / selection          */
-  --moss:    #60704e; /* deep olive — ink mid                        */
-  --moss-900:#2f3a26; /* deepest ink — primary text                  */
+  --poppy:   #d85455;
+  --sage:    #91ad94;
+  --cream:   #fbf6e9;
+  --apricot: #f1a97a;
+  --moss:    #60704e;
+  --moss-900:#2f3a26;
 
-  /* ── Tints ─────────────────────────────────────────────────────────── */
   --cream-50:    #fefbf3;
   --cream-100:   #fbf6e9;
   --cream-200:   #f3ecd7;
@@ -57,20 +53,18 @@
   --sage-200:    #c8d6c9;
   --sage-600:    #6f8c73;
 
-  /* ── Semantic aliases (use these in all overrides) ──────────────────── */
-  --bg:          var(--cream-100);   /* page background          */
-  --bg-elevated: var(--cream-50);    /* cards / hover surfaces   */
-  --bg-sunken:   var(--cream-200);   /* code blocks / inset      */
-  --fg:          var(--moss-900);    /* primary text / headings  */
-  --fg-muted:    var(--moss-700);    /* body text                */
-  --fg-subtle:   var(--moss-300);    /* captions / meta          */
-  --accent:      var(--poppy);       /* links / CTAs             */
-  --accent-hover:var(--poppy-600);   /* link hover               */
-  --success:     var(--sage-600);    /* success states           */
-  --highlight:   var(--apricot);     /* selection / highlight    */
-  --border:      var(--cream-300);   /* dividers / table borders */
+  --bg:          var(--cream-100);
+  --bg-elevated: var(--cream-50);
+  --bg-sunken:   var(--cream-200);
+  --fg:          var(--moss-900);
+  --fg-muted:    var(--moss-700);
+  --fg-subtle:   var(--moss-300);
+  --accent:      var(--poppy);
+  --accent-hover:var(--poppy-600);
+  --success:     var(--sage-600);
+  --highlight:   var(--apricot);
+  --border:      var(--cream-300);
 
-  /* ── Font stacks ────────────────────────────────────────────────────── */
   --font-display: "Cooper Md BT", "Cooper BT", Georgia, serif;
   --font-sans:    "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --font-mono:    "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -84,7 +78,7 @@ body {
   font-family: var(--font-sans);
 }
 
-/* ── Header (Cayman .page-header) ───────────────────────────────────────── */
+/* ── Header: moss gradient banner ───────────────────────────────────────── */
 
 .page-header {
   background-color: var(--moss-900);
@@ -104,10 +98,13 @@ body {
   color: var(--cream-200);
 }
 
+/* ── Buttons (Cayman header .btn) ───────────────────────────────────────── */
+
 .btn {
   border-color: var(--cream-300);
   color: var(--cream-50);
 }
+
 .btn:hover {
   background-color: rgba(254, 251, 243, 0.12);
   border-color: var(--cream-50);
@@ -124,6 +121,12 @@ body {
   color: var(--fg);
 }
 
+.main-content h1 {
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
 .main-content h4,
 .main-content h5,
 .main-content h6 {
@@ -132,11 +135,33 @@ body {
   color: var(--fg);
 }
 
+/* ── h2: poppy accent underline ─────────────────────────────────────────── */
+
+.main-content h2 {
+  padding-bottom: 0.35em;
+  border-bottom: 2px solid var(--cream-300);
+  position: relative;
+}
+
+.main-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--accent);
+}
+
 /* ── Links ──────────────────────────────────────────────────────────────── */
 
 a {
   color: var(--accent);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color 140ms ease;
 }
+
 a:hover {
   color: var(--accent-hover);
 }
@@ -154,13 +179,18 @@ samp {
 
 pre {
   border: 1px solid var(--border);
+  border-radius: 10px;
 }
 
 pre > code {
   background-color: transparent;
 }
 
-/* ── Eyebrow / caption / metadata elements ──────────────────────────────── */
+code {
+  border-radius: 4px;
+}
+
+/* ── Small / meta elements ──────────────────────────────────────────────── */
 
 small,
 caption,
@@ -172,6 +202,12 @@ figcaption,
 
 /* ── Tables ─────────────────────────────────────────────────────────────── */
 
+.main-content table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .main-content table th,
 .main-content table td {
   border-color: var(--border);
@@ -182,15 +218,49 @@ figcaption,
   color: var(--fg);
 }
 
-/* ── Dividers & blockquotes ─────────────────────────────────────────────── */
+.main-content table tr:nth-child(even) td {
+  background-color: var(--bg-elevated);
+}
+
+.main-content table tr:hover td {
+  background-color: var(--apricot-200);
+  transition: background-color 140ms ease;
+}
+
+/* ── Dividers ───────────────────────────────────────────────────────────── */
 
 hr {
   border-color: var(--border);
 }
 
+/* ── Blockquotes ────────────────────────────────────────────────────────── */
+
 blockquote {
-  border-left-color: var(--accent);
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 0.9rem 1.4rem;
   color: var(--fg-muted);
+}
+
+/* ── Images ─────────────────────────────────────────────────────────────── */
+
+.main-content img {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px -4px rgba(47, 58, 38, 0.12);
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+}
+
+/* ── iframes ────────────────────────────────────────────────────────────── */
+
+iframe {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  margin: 1.5rem 0;
 }
 
 /* ── Footer ─────────────────────────────────────────────────────────────── */
