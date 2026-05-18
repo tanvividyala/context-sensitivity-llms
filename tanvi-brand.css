@@ -1,0 +1,211 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   tanvi-brand.css — Reusable brand surface for Cayman-themed GitHub Pages
+   ───────────────────────────────────────────────────────────────────────────
+
+   HOW TO USE IN ANY CAYMAN GITHUB PAGES PROJECT
+   ──────────────────────────────────────────────
+   1. Copy this file into your project (e.g. assets/css/tanvi-brand.css).
+   2. Copy fonts/CooperMdBT-Medium.ttf into a fonts/ directory.
+   3. In assets/css/style.scss:
+
+        ---
+        ---
+        @import "jekyll-theme-cayman";
+        @import "tanvi-brand";        ← or inline this file's contents after the import
+
+   That's it. Colors and fonts only — layout, spacing, and shadows are untouched.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts ───────────────────────────────────────────────────────── */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap");
+
+/* ── Cooper Md BT (display font) ────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Cooper Md BT";
+  src: url("/fonts/CooperMdBT-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Color & font tokens ────────────────────────────────────────────────── */
+
+:root {
+  /* ── Core palette ──────────────────────────────────────────────────────
+     Five evocative names derived from the Tanvi source palette.
+     Use these in one-off accents; prefer semantic aliases in components.  */
+  --poppy:   #d85455; /* warm red  — primary accent / CTAs / links */
+  --sage:    #91ad94; /* dusty green — success / secondary           */
+  --cream:   #fbf6e9; /* off-white  — page background                */
+  --apricot: #f1a97a; /* peach      — highlight / selection          */
+  --moss:    #60704e; /* deep olive — ink mid                        */
+  --moss-900:#2f3a26; /* deepest ink — primary text                  */
+
+  /* ── Tints ─────────────────────────────────────────────────────────── */
+  --cream-50:    #fefbf3;
+  --cream-100:   #fbf6e9;
+  --cream-200:   #f3ecd7;
+  --cream-300:   #e6dec3;
+  --moss-300:    #8a9776;
+  --moss-700:    #485636;
+  --poppy-200:   #f0b5b5;
+  --poppy-600:   #b8403f;
+  --apricot-200: #f9d4ba;
+  --apricot-600: #d98453;
+  --sage-200:    #c8d6c9;
+  --sage-600:    #6f8c73;
+
+  /* ── Semantic aliases (use these in all overrides) ──────────────────── */
+  --bg:          var(--cream-100);   /* page background          */
+  --bg-elevated: var(--cream-50);    /* cards / hover surfaces   */
+  --bg-sunken:   var(--cream-200);   /* code blocks / inset      */
+  --fg:          var(--moss-900);    /* primary text / headings  */
+  --fg-muted:    var(--moss-700);    /* body text                */
+  --fg-subtle:   var(--moss-300);    /* captions / meta          */
+  --accent:      var(--poppy);       /* links / CTAs             */
+  --accent-hover:var(--poppy-600);   /* link hover               */
+  --success:     var(--sage-600);    /* success states           */
+  --highlight:   var(--apricot);     /* selection / highlight    */
+  --border:      var(--cream-300);   /* dividers / table borders */
+
+  /* ── Font stacks ────────────────────────────────────────────────────── */
+  --font-display: "Cooper Md BT", "Cooper BT", Georgia, serif;
+  --font-sans:    "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* ── Body ───────────────────────────────────────────────────────────────── */
+
+body {
+  background-color: var(--bg);
+  color: var(--fg-muted);
+  font-family: var(--font-sans);
+}
+
+/* ── Header (Cayman .page-header) ───────────────────────────────────────── */
+
+.page-header {
+  background-color: var(--moss-900);
+  background-image: linear-gradient(135deg, var(--moss-900) 0%, var(--moss) 100%);
+  color: var(--cream-50);
+}
+
+.page-header .project-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--cream-50);
+}
+
+.page-header .project-tagline {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: var(--cream-200);
+}
+
+.btn {
+  border-color: var(--cream-300);
+  color: var(--cream-50);
+}
+.btn:hover {
+  background-color: rgba(254, 251, 243, 0.12);
+  border-color: var(--cream-50);
+  color: var(--cream-50);
+}
+
+/* ── Headings ───────────────────────────────────────────────────────────── */
+
+.main-content h1,
+.main-content h2,
+.main-content h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--fg);
+}
+
+/* ── Links ──────────────────────────────────────────────────────────────── */
+
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ── Code & mono ────────────────────────────────────────────────────────── */
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  background-color: var(--bg-sunken);
+  color: var(--fg);
+}
+
+pre {
+  border: 1px solid var(--border);
+}
+
+pre > code {
+  background-color: transparent;
+}
+
+/* ── Eyebrow / caption / metadata elements ──────────────────────────────── */
+
+small,
+caption,
+figcaption,
+.main-content sup,
+.main-content sub {
+  font-family: var(--font-mono);
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────────── */
+
+.main-content table th,
+.main-content table td {
+  border-color: var(--border);
+}
+
+.main-content table th {
+  background-color: var(--bg-sunken);
+  color: var(--fg);
+}
+
+/* ── Dividers & blockquotes ─────────────────────────────────────────────── */
+
+hr {
+  border-color: var(--border);
+}
+
+blockquote {
+  border-left-color: var(--accent);
+  color: var(--fg-muted);
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+
+.site-footer {
+  border-top-color: var(--border);
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────────── */
+
+::selection {
+  background: var(--apricot-200);
+  color: var(--moss-900);
+}
