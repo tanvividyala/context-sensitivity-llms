@@ -17,7 +17,7 @@ I hypothesize that LLMs will show lower surprisal for low-context stimuli becaus
 
 ## Methods
 ### Model Selection
-To test this idea across different training setups, I used four LLMs from the Hugging Face transformers library. I selected two causal models, `distilgpt2` and `gpt2-medium`. Both of these models operate with a next-token prediction objective and represent a common family of English-dominant architectures. I additionally added two masked models, `mBERT` and `XLM-R`, which are known to allow comparison across multilingual training corpora. The mask-prediction objective and broader language coverage can create a useful contrast with the causal models.
+To test this idea across different training setups, I used three LLMs from the Hugging Face transformers library. I selected one causal model, `distilgpt2`, which operates with a next-token prediction objective and represents a common family of English-dominant architectures. I additionally added two masked models, `mBERT` and `XLM-R`, which are known to allow comparison across multilingual training corpora. The mask-prediction objective and broader language coverage can create a useful contrast with the causal model.
 
 ## Stimuli Construction
 I designed ten minimally paired stimuli, producing twenty items in total. Each pair consisted of an English sentence that represented a different type of speech act such as a request, refusal, disagreement, or correction. Every pair had a low-context version that expressed meaning directly and a high-context version that relied on subtle cues or softer phrasing. This format matched the idea that high-context environments embed meaning in the situation, while low-context environments prefer explicit coding of intent.
@@ -50,22 +50,20 @@ I designed ten minimally paired stimuli, producing twenty items in total. Each p
 ### Assessing Surprisal Through Functions
 Surprisal was calculated as a proxy for the model's "surprise" to see how unexpected the missing word is. I defined two distinct functions to accommodate the architectural differences between the models:
 
-`casual_surprisal()`: For `distilgpt2` and `gpt2-medium`, I calculated surprisal of the critical word that followed the prefix. These models predict the next token in sequence, so this method is aligned with their training objective. <br>
+`casual_surprisal()`: For `distilgpt2`, I calculated surprisal of the critical word that followed the prefix. This model predicts the next token in sequence, so this method is aligned with its training objective. <br>
 `masked_surprisal()`: For `mBERT` and `XLM-R`, I placed a `[MASK]` token at the end of the prefix. I extracted the logits for the mask position to compute the probability of the critical word. If the tokenizer split the word into several sub-tokens, I used the mean surprisal across those pieces.
 
 ### Procedure
-I ran each of the twenty stimuli through all four models. This process produced 80 total data points. For each case, I recorded the model, the condition, the critical word, and the surprisal value in a pandas dataframe. 
+I ran each of the twenty stimuli through all three models. This process produced 60 total data points. For each case, I recorded the model, the condition, the critical word, and the surprisal value in a pandas dataframe. 
 
 | model        | condition   | critical     | surprisal   |
 |--------------|-------------|--------------|-------------|
 | distilgpt2   | LowContext  | cold         | 5.225095    |
-| gpt2-medium  | LowContext  | cold         | 4.206719    |
 | mBERT        | LowContext  | cold         | 3.946653    |
 | XLM-R        | LowContext  | cold         | 2.817520    |
 | distilgpt2   | HighContext | chilly       | 9.574214    |
 | XLM-R        | LowContext  | temperature  | 4.019905    |
 | distilgpt2   | HighContext | room         | 2.339399    |
-| gpt2-medium  | HighContext | room         | 2.010232    |
 | mBERT        | HighContext | room         | 4.086168    |
 | XLM-R        | HighContext | room         | 5.441202    |
 
@@ -77,7 +75,7 @@ Consistent with my hypothesis, all four models exhibited lower mean surprisal fo
 <iframe src="assets/bar_plot.html" width="1200" height="600" frameborder="0" ></iframe>
 *Figure 1. Mean Surprisal Across Models (High vs. Low Context)*
 
-As illustrated in Figure 1, the disparity was observable across both causal and masked architectures. Causal models, like distilgpt2 and gpt2-medium, showed a distinct preference for low-context completions. For example, distilgpt2 assigned a surprisal of approximately 5.23 bits to the low-context critical word "cold" (in a food complaint scenario), compared to 9.57 bits for the high-context equivalent "chilly". Additionally, the effect held and was very pronounced in the masked multilingual models. XLM-R displayed the largest divergence, with mean surprisal values for high-context stimuli reaching significantly higher levels than their low-context counterparts.
+As illustrated in Figure 1, the disparity was observable across both causal and masked architectures. The causal model distilgpt2 showed a distinct preference for low-context completions — for example, it assigned a surprisal of approximately 5.23 bits to the low-context critical word "cold" (in a food complaint scenario), compared to 9.57 bits for the high-context equivalent "chilly". Additionally, the effect held and was very pronounced in the masked multilingual models. XLM-R displayed the largest divergence, with mean surprisal values for high-context stimuli reaching significantly higher levels than their low-context counterparts.
 
 ### Distributional Analysis
 <iframe src="assets/violin_plot.html" width="1200" height="600" frameborder="0" ></iframe>
@@ -89,9 +87,9 @@ As illustrated in Figure 1, the disparity was observable across both causal and 
 Violin (Fig 2) and box plot (Fig 3) analyses of the results further confirm that the distribution of surprisal values for High-Context items (red) was consistently higher and more variable than for Low-Context items (blue). While mBERT showed a slightly tighter distribution, the median surprisal for High-Context stimuli remained strictly higher than for Low-Context stimuli across every model tested. These findings support the conclusion that LLMs possess a structural bias toward the explicit communication styles prevalent in their predominantly Western training data.
 
 # Discussion
-Across all four models, low-context formulations received lower surprisal than high-context equivalents, suggesting direct, explicit realizations are encoded as more expected continuations. This aligns with the idea that LLMs, trained primarily on WEIRD-dominated and low-context-leaning corpora, internalize explicitness as a default communicative norm. At the same time, the English-only, decontextualized design and genre biases of the training data mean that the effect cannot be straightforwardly attributed to “culture” alone.
+Across all three models, low-context formulations received lower surprisal than high-context equivalents, suggesting direct, explicit realizations are encoded as more expected continuations. This aligns with the idea that LLMs, trained primarily on WEIRD-dominated and low-context-leaning corpora, internalize explicitness as a default communicative norm. At the same time, the English-only, decontextualized design and genre biases of the training data mean that the effect cannot be straightforwardly attributed to “culture” alone.
 
-This study faces several potential confounding variables. All stimuli were written in English and modeled on relatively idealized examples of indirectness, which may reflect English-specific genre and register conventions rather than universal high-context norms. Differences in token frequency and subword segmentation between critical words (e.g., “now” vs. “chilly”) could also influence surprisal independently of contextual explicitness. Model-level factors can also further complicate the interpretability of this study. Each of the four models used differ in training objectives, tokenization schemes, and (for the multilingual models) undocumented mixtures of non-English data. With only 10 minimal pairs and a narrow set of speech acts, the experiment may also overfit to details of this small dataset rather than capturing a generalizable effect.
+This study faces several potential confounding variables. All stimuli were written in English and modeled on relatively idealized examples of indirectness, which may reflect English-specific genre and register conventions rather than universal high-context norms. Differences in token frequency and subword segmentation between critical words (e.g., “now” vs. “chilly”) could also influence surprisal independently of contextual explicitness. Model-level factors can also further complicate the interpretability of this study. Each of the three models used differ in training objectives, tokenization schemes, and (for the multilingual models) undocumented mixtures of non-English data. With only 10 minimal pairs and a narrow set of speech acts, the experiment may also overfit to details of this small dataset rather than capturing a generalizable effect.
 
 Even with these constraints, the study highlights a meaningful concern in the accessibility of LLMs. These systems operate on a global scale, yet they may favor direct speech patterns associated with WEIRD cultures. High-context phrasing may appear marked or unexpected to the model. This creates pressure toward explicit forms of communication that do not match the needs of users from high-context backgrounds who may perceive low-context word predictions as impolite. Future work towards this question should involve larger stimulus sets, more naturalistic examples, and languages beyond English. Studies that juxtapose model surprisal with human judgments across cultural groups can help clarify how LLMs learn and reproduce context-based communication norms, making these models helpful for people worldwide.
 
