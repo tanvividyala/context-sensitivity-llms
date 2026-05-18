@@ -5,7 +5,7 @@
    HOW TO USE IN ANY CAYMAN GITHUB PAGES PROJECT
    ──────────────────────────────────────────────
    1. Copy this file into your project (e.g. assets/css/tanvi-brand.css).
-   2. Copy fonts/CooperMdBT-Medium.ttf into a fonts/ directory.
+   2. Copy "Cooper Md BT Medium.ttf" into a fonts/ directory at the repo root.
    3. In assets/css/style.scss:
 
         ---
@@ -13,7 +13,8 @@
         @import "jekyll-theme-cayman";
         @import "tanvi-brand";        ← or inline this file's contents after the import
 
-   The Cayman page-header banner is styled with a moss gradient.
+   The Cayman page-header is hidden; the title lives in the content h1.
+   Update the eyebrow ::before content to match your project.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Google Fonts ───────────────────────────────────────────────────────── */
@@ -24,7 +25,7 @@
 
 @font-face {
   font-family: "Cooper Md BT";
-  src: url("/fonts/CooperMdBT-Medium.ttf") format("truetype");
+  src: url("/fonts/Cooper Md BT Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -78,37 +79,16 @@ body {
   font-family: var(--font-sans);
 }
 
-/* ── Header: moss gradient banner ───────────────────────────────────────── */
+/* ── Header: hidden — title lives in the content h1 ─────────────────────── */
 
 .page-header {
-  background-color: var(--moss-900);
-  background-image: linear-gradient(135deg, var(--moss-900) 0%, var(--moss) 100%);
-  color: var(--cream-50);
+  display: none;
 }
 
-.page-header .project-name {
-  font-family: var(--font-display);
-  font-weight: 500;
-  color: var(--cream-50);
-}
+/* ── Main content: breathing room at top ────────────────────────────────── */
 
-.page-header .project-tagline {
-  font-family: var(--font-sans);
-  font-weight: 300;
-  color: var(--cream-200);
-}
-
-/* ── Buttons (Cayman header .btn) ───────────────────────────────────────── */
-
-.btn {
-  border-color: var(--cream-300);
-  color: var(--cream-50);
-}
-
-.btn:hover {
-  background-color: rgba(254, 251, 243, 0.12);
-  border-color: var(--cream-50);
-  color: var(--cream-50);
+.main-content {
+  padding-top: 3rem;
 }
 
 /* ── Headings ───────────────────────────────────────────────────────────── */
@@ -125,6 +105,31 @@ body {
   font-size: clamp(2.2rem, 3.5vw, 3rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
+}
+
+/* ── Eyebrow label above h1 ─────────────────────────────────────────────── */
+
+.main-content h1:first-of-type::before {
+  content: "— High-Context vs. Low-Context Sensitivity in LLMs";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+/* ── Byline paragraph immediately after h1 ──────────────────────────────── */
+
+.main-content h1:first-of-type + p {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--fg-subtle);
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .main-content h4,
