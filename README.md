@@ -1,6 +1,5 @@
 # High-Context vs. Low-Context Sensitivity in LLMs and ‘WEIRD’ Cultural Bias in Training Corpora
-**Tanvi Vidyala** <br>
-*COGS 150 Fall 2025 Final Project*
+By Tanvi Vidyala <br>
 
 ## Research Question
 Do Large Language Models assign significantly lower surprisal to low-context speech acts compared to high-context equivalents? Additionally, do multilingual models perform better at high-context tasks?
